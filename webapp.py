@@ -12,21 +12,20 @@ def home():
     #print(states)
     return render_template('home.html', state_options=states)
 
-@app.route('/showFact')
-def render_fact():
+@app.route('/showFacts')
+def render_facts():
     states = get_state_options()
     state = request.args.get('state')
-    county = county_most_under_18(state)
-    fact = "In " + state + ", the county with the highest percentage of under 18 year olds is " + county + "."
-    return render_template('home.html', state_options=states, funFact=fact)
-    
-@app.route('/showFact2')
-def render_fact2():
-    states = get_state_options()
-    state = request.args.get('state')
-    county = county_most_Manufacturers_Shipments(state)
-    fact2 = "In " + state + ", the county with the highest percentage of manufacturers shipments is " + county + "."
-    return render_template('home.html', state_options=states, funFact2=fact2)
+
+   
+    county_under_18 = county_most_under_18(state)
+    fact1 = f"In {state}, the county with the highest percentage of under 18 year olds is {county_under_18}."
+
+   
+    county_manufacturers = county_most_Manufacturers_Shipments(state)
+    fact2 = f"In {state}, the county with the highest percentage of manufacturers shipments is {county_manufacturers}."
+
+    return render_template('home.html', state_options=states, funFact=fact1, funFact2=fact2)
  
 def get_state_options():
     """Return the html code for the drop down menu.  Each option is a state abbreviation from the demographic data."""
