@@ -17,17 +17,12 @@ def render_fact():
     state = request.args.get('state')
     county = county_most_under_18(state)
     fact = "In " + state + ", the county with the highest percentage of under 18 year olds is " + county + "."
-    
-<<<<<<< HEAD
     county = county_most_Manufacturers_Shipments(state)
     fact2 = "In " + state + ", the county with the highest percentage of manufacturers shipments is " + county + "."
     
     return render_template('home.html', state_options=states, funFact=fact,funFact2=fact2)
 
-        
-=======
-@app.route('/showFact2')
->>>>>>> a4d3839864a8329f1f6338a88a82dc93f1ee4cb1
+    
 def render_fact2():
     states = get_state_options()
     state = request.args.get('state')
