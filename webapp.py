@@ -1,6 +1,5 @@
 from flask import Flask, request, render_template, flash
 from markupsafe import Markup
-
 import os
 import json
 
@@ -18,9 +17,12 @@ def render_fact():
     state = request.args.get('state')
     county = county_most_under_18(state)
     fact = "In " + state + ", the county with the highest percentage of under 18 year olds is " + county + "."
-    return render_template('home.html', state_options=states, funFact=fact)
+    county = county_most_Manufacturers_Shipments(state)
+    fact2 = "In " + state + ", the county with the highest percentage of manufacturers shipments is " + county + "."
     
-@app.route('/showFact2')
+    return render_template('home.html', state_options=states, funFact=fact,funFact2=fact2)
+
+    
 def render_fact2():
     states = get_state_options()
     state = request.args.get('state')
